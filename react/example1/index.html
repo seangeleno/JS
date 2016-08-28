@@ -1,0 +1,37 @@
+<head>
+  //react is used for creating classes
+  <script src="https://npmcdn.com/react@15.3.1/dist/react.js"></script>
+  //react dom is used to insert the into the DOM
+  <script src="https://npmcdn.com/react-dom@15.3.1/dist/react-dom.js"></script>
+  <script src="https://fb.me/JSXTransformer-0.12.2.js" charset="utf-8"></script>
+</head>
+<body>
+</body>
+
+<script type="text/jsx">
+/*
+  First step is to define a react component class
+  2nd step is to render this class
+  3rd step is to ask react to place the rendered element in the dom
+*/
+
+  //step 1 - cookie cutter
+  var HelloWorld = React.createClass({
+    render: function(){
+      return <h1>
+      Hello World
+      </h1>
+    }
+  });
+  //step 2 - cookie dough cutout or instance of hellworld class
+  var element = React.createElement(HelloWorld);
+  //step 3
+  ReactDOM.render(
+    //first step of render is selecting
+    element,
+    //step 2 is to say where it should be rendered
+    document.body
+
+  )
+
+</script>

@@ -1,0 +1,58 @@
+<head>
+  <script src="http://fb.me/react-0.13.0.js"></script>
+  <script src="http://fb.me/JSXTransformer-0.13.0.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" media="screen" title="no title" charset="utf-8">
+</head>
+
+<body>
+
+  <div class="container">
+
+  </div>
+
+</body>
+
+<script type="text/jsx">
+  //All of our code will go here and render into container
+  //First class is Badge - can be used within other components with <Badge />
+  var Badge = React.createClass({
+    render: function () {
+      return <button className="btn btn-primary" type="button">
+             {this.props.title} <span className="badge">{this.props.number}</span>
+             </button>
+    }
+  });
+
+  //second class is Thumbnail (notice components done with capical first letter)
+
+  var Thumbnail = React.createClass({
+    render: function() {
+      return <div className="col-sm-6 col-md-4">
+        <div className="thumbnail">
+          <img src={this.props.imageUrl} alt="..."></img>
+          <div className="caption">
+            <h3>{this.props.header}</h3>
+            <p>{this.props.description}</p>
+            <p>
+              <Badge title={this.props.title} number={this.props.number} />
+            </p>
+          </div>
+        </div>
+      </div>
+    }
+  });
+
+  var options = {};
+  options.title = 'Show Courses';
+  options.number = 12;
+  options.header = 'Learning React';
+  options.description = 'React is the V in MVC, a fantastic front end library for rendering. I <3 React JS. Below I have nested the Badge Component, pretty neat, eh?';
+  options.imageUrl = 'https://raw.githubusercontent.com/wiki/facebook/react/react-logo-1000-transparent.png';
+
+  var element = React.createElement(Thumbnail, options);
+
+  React.render(element, document.querySelector('.container'));
+
+
+
+</script>
