@@ -1,3 +1,4 @@
+  //build process
   const gulp = require('gulp');
   //console logs info while build process is running (debugging)
   const gutil = require('gulp-util');
@@ -10,6 +11,24 @@
   //in conjuction with browserify to convert JSX to JS
   const reactify = require('reactify');
 
+  gulp.task('default', function () {
+    var bundler = watchify(browserify({
+      // object with configuration for browserify
+      entries: ['./src/app.jsx'],
+      //while its figuring otu dependecies it transforms JSX to JS
+      transform: [reactify],
+      extensions: ['.jsx'],
+      debug: true,
+      cache: {},
+      packageCache: {},
+      fullPaths: true
+    })); //end of watchify process
+    //build function goes next
+    
+
+  });
+
+  /*
   gulp.task('default', function () {
     //first step: create bundler aka object that executes build
     var bundler = watchify(browserify({
@@ -38,3 +57,4 @@
     build()
     bundler.on('update', build);
   });
+  */
